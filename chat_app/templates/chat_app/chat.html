@@ -1,0 +1,26 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat Liste</title>
+    <link rel="stylesheet" href="{% static 'chat_app/chat.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h1>💬 Chat Liste</h1>
+
+        {% for chat in chats %}
+            <article class="chat-karte">
+                <h2>{{ chat.name }}</h2>
+                <p class="message">{{ chat.message }}</p>
+                <p class="date">{{ chat.created_at|date:"d.m.Y H:i" }}</p>
+            </article>
+        {% empty %}
+            <p>Henüz mesaj yok.</p>
+        {% endfor %}
+    </div>
+</body>
+</html>
